@@ -1,0 +1,142 @@
+<div class="container" style="bottom: 350px;">
+   <div class="left" class="btn btn-success" >
+    <h3>
+Customer Full Details and Amount to Pay
+    </h3>
+    <form [formGroup]="deliveryDetail">
+      Username[Full Name]
+      <input type="text" placeholder="Enter Your Name" matInput formControlName="name" name="name"  class="form-control" required>
+      <mat-error *ngIf="deliveryDetail.controls.name.touched && deliveryDetail.controls
+      .contactNumber.invalid">
+  <span *ngIf="deliveryDetail.controls.name.errors.required">This field is mandatory</span>
+  <span *ngIf="deliveryDetail.controls.name.errors.pattern">This field is invalid
+  </span>
+  </mat-error>
+  <br>
+      <!-- Repeat the above structure for other form fields -->
+      
+      
+      contactNumber
+      <input type="text" placeholder="Enter Your Contact Number" matInput formControlName="contactNumber" name="contactNumber"  class="form-control" required>
+      <mat-error *ngIf="deliveryDetail.controls.contactNumber.touched && deliveryDetail.controls
+      .contactNumber.invalid">
+  <span *ngIf="deliveryDetail.controls.contactNumber.errors.required">This field is mandatory</span>
+  <span *ngIf="deliveryDetail.controls.contactNumber.errors.pattern">This field is invalid
+  </span>
+  </mat-error>
+  <br> 
+
+        Address
+      <input type="text" placeholder="Enter Adress" matInput formControlName="address" name="address"  class="form-control" required>
+       <mat-error *ngIf="deliveryDetail.controls.address.touched && deliveryDetail.controls
+      .contactNumber.invalid">
+  <span *ngIf="deliveryDetail.controls.address.errors.required">This field is mandatory</span>
+  <span *ngIf="deliveryDetail.controls.address.errors.pattern">This field is invalid
+  </span>
+  
+     
+  </mat-error> 
+  <br>
+      City
+       <input type="text" placeholder="Enter City" matInput formControlName="city" name="city"  class="form-control" required>
+      <mat-error *ngIf="deliveryDetail.controls.city.touched && deliveryDetail.controls
+      .contactNumber.invalid">
+  <span *ngIf="deliveryDetail.controls.city.errors.required">This field is mandatory</span>
+  <span *ngIf="deliveryDetail.controls.city.errors.pattern">This field is invalid
+  </span>
+  </mat-error>
+  
+       State <input type="text" placeholder="Enter State" matInput formControlName="state" name="state"  class="form-control" required>
+<!-- <mat-error *ngIf="deliveryDetail.controls.state.touched && deliveryDetail.controls
+      .contactNumber.invalid">
+  <span *ngIf="deliveryDetail.controls.state.errors.required">This field is mandatory</span>
+  <span *ngIf="deliveryDetail.controls.state.errors.pattern">This field is invalid
+  </span>
+  </mat-error> -->
+        <!-- <label>State
+          <select>
+              <option> Uttra Khand</option>
+            <option> Banglore</option>
+            <option>Uttar Pradesh</option>
+            <option> Pune</option>
+            <option> Maharastra</option>
+
+          </select>
+        </label>  -->
+        Pin Code
+          <input type="number" placeholder="Pin Code" minlength="6" maxlength="6" name="pinCode" matInput formControlName="pinCode"  class="form-control" required>
+    
+    </form>
+  </div> 
+  <div class="right">
+    <h3>
+      
+          </h3>
+          
+<div class="container"  class="style" style="float:left;">
+</div>
+<div style="height: 400px;">  
+  <div class="row" class="btn btn-success"  >
+    <div class="col-md-4 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <!-- <span class="text-muted">Items Added To Cart</span> -->
+            <h3>Items In Cart</h3>
+            <span class="badge badge-secondary badge-pill"></span>
+        </h4>
+        <ul class="list-group mb-3 sticky-top" style="width: 350px;">
+            <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let item of cartItems">
+                <div style="flex-direction: row;">
+                  <!-- <img style="height:50px; width: 50px;" src="{{item.prod_image}}"> -->
+                  <div style="display:grid;">
+                  <h5 class="my-0" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 30ch;">{{item.prod_name}}</h5>
+                      <h5>Quantity: {{item.prod_quantity}}</h5> 
+                    <!-- <h5>Quantity: <input type="number" [(ngModel)]="item.prod_quantity" /></h5> -->
+
+                  </div> 
+                </div>
+              
+
+                
+              <!-- <h6>Price</h6><td><span class="text-muted">{{item.prod_price}}</span> </td> -->
+
+            <h5>Subtotal  <td>INR {{item.prod_quantity * item.prod_price | number}}</td> </h5>
+
+                
+             
+            </li>
+            <!-- <li class="list-group-item d-flex justify-content-between bg-light">
+                <div class="text-success">
+                    <h6 class="my-0">Promo code</h6>
+                    <small>EXAMPLECODE</small>
+                </div>
+                <span class="text-success">-$5</span>
+            </li> -->
+            <li class="list-group-item d-flex justify-content-between">
+                <span>Total (INR)</span>
+                <strong>{{grandAmount()|currency:'INR'}}</strong>
+            </li>
+        
+        <div style="height: 150px;">
+
+        <button text-align: center mat-raised-button color="primary" class="btn btn-success"  type="submit" (click)="handleSubmit()" [disabled]="!(deliveryDetail.valid && deliveryDetail.dirty)">
+          <mat-icon>payment</mat-icon>
+      Click To Pay
+      </button>
+      </div>
+      </ul>
+      </div>
+    </div>
+  </div>
+
+  
+
+</div>
+ <!-- <div style="height: 300px;">
+  <button mat-raised-button color="primary" class="btn btn-success" style="margin-top: 670px;"  type="submit" (click)="handleSubmit()" >
+    <mat-icon>payment</mat-icon>
+  Click To Pay
+  </button>
+  </div> -->
+  
+</div> 
+
